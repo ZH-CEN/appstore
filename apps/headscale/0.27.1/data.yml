@@ -1,0 +1,10 @@
+additionalProperties:
+  formFields:
+    - default: 40183
+      edit: true
+      envKey: PANEL_APP_PORT_HTTP
+      labelEn: Port (Corresponding to internal 8080)
+      labelZh: 端口 (对应内部 8080)
+      required: true
+      rule: paramPort
+      type: number
