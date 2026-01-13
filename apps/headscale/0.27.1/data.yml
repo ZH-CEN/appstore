@@ -9,11 +9,11 @@ additionalProperties:
       rule: paramPort
       type: number
 
-    - default: 9090
+    - default: 3478
       edit: true
       envKey: PANEL_APP_PORT_METRECS
-      labelEn: Port (Corresponding to internal 9090)
-      labelZh: 端口 (对应内部 9090)
+      labelEn: Port (Corresponding to internal 3478)
+      labelZh: 端口 (对应内部 3478)
       required: true
       rule: paramPort
       type: number
