@@ -1,0 +1,30 @@
+services:
+  headscale:
+    container_name: ${CONTAINER_NAME}
+    image: headscale/headscale:v0.28.0
+    restart: always
+    networks:
+      1panel-network:
+    ports:
+      - "${PANEL_APP_PORT_HTTP}:8080"
+      - "${PANEL_APP_PORT_STUN}:3478"
+    volumes:
+      - "./data/config:/etc/headscale"
+      - "./data/data:/var/lib/headscale"
+      - "./data/run:/var/run/headscale"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv6.conf.all.forwarding=1
+    command: serve
+    healthcheck:
+        test: ["CMD", "headscale", "health"]
+    labels:  
+      createdBy: "Apps"
+
+networks:  
+  1panel-network:  
+    external: true
